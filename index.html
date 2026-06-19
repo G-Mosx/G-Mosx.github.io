@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GEORGE MOSCHOLIOS | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
     <style>
         /* --- RESET & VARIABLES --- */
         * {
@@ -114,13 +115,25 @@
         }
 
         h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 50%, var(--cls-hero));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+         font-family: 'Syne', sans-serif;
+         font-size: 5.5rem; /* Μεγάλωσε για να δείχνει επιβλητικό */
+         font-weight: 800;
+         line-height: 1;
+         text-transform: uppercase;
+         letter-spacing: -2px; /* Κολλάει τα γράμματα ελαφρώς όπως στην εικόνα */
+         margin-bottom: 2rem;
+         transform: scaleY(1.1); /* Κάνει το κείμενο ελαφρώς πιο stretch/ψηλό */
+    
+         /* Το ριγέ gradient εφέ (White -> Magenta -> Cyan) */
+         background: linear-gradient(
+         to bottom, 
+         #f3f4f6 0%, #f3f4f6 33%, 
+         #ff007f 33%, #ff007f 66%, 
+         #00f2fe 66%, #00f2fe 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
         }
 
         .subtitle {
