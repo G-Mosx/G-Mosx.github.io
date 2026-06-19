@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George Moscholios | Portfolio</title>
+    <title>George Mosxolios | Portfolio</title>
     <style>
         /* --- RESET & VARIABLES --- */
         * {
@@ -14,12 +14,13 @@
         }
 
         :root {
-            --bg-color: #0a0a0c;
+            --bg-color: #080510; /* Ultra deep space purple */
             --text-color: #f3f4f6;
-            --accent-color: #00f2fe; /* Electric Cyan */
-            --accent-secondary: #4facfe;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border-color: rgba(0, 242, 254, 0.2);
+            --accent-primary: #ff007f; /* Neon Magenta / Pink */
+            --accent-secondary: #7000ff; /* Electric Purple */
+            --accent-tertiary: #00f2fe; /* Cyan highlight */
+            --card-bg: rgba(112, 0, 255, 0.04);
+            --border-color: rgba(255, 0, 127, 0.2);
         }
 
         body {
@@ -36,14 +37,14 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at center, rgba(112, 0, 255, 0.08) 0%, rgba(255, 0, 127, 0.03) 30%, transparent 60%);
             z-index: -1;
-            animation: floatGlow 15s infinite alternate linear;
+            animation: floatGlow 20s infinite alternate linear;
         }
 
         @keyframes floatGlow {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(5%, 5%); }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(4%, 6%) rotate(5deg); }
         }
 
         /* --- LAYOUT CONTAINER --- */
@@ -55,171 +56,138 @@
 
         /* --- HERO SECTION --- */
         header {
-            min-height: 80vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
         }
 
-        .glitch-wrapper {
-            position: relative;
-        }
-
         .title-pre {
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--text-color) 30%, var(--accent-color));
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-primary), var(--accent-tertiary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            font-size: 1.25rem;
-            color: #9ca3af;
-            max-width: 600px;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            color: #b3b4bd;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
         }
 
         .subtitle strong {
-            color: var(--text-color);
+            color: #ffffff;
+            border-bottom: 2px dashed var(--accent-secondary);
+            padding-bottom: 2px;
         }
 
         /* --- STACK / SKILLS --- */
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
             position: relative;
             display: inline-block;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent-color);
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             border-radius: 2px;
         }
 
         .stack-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 1rem;
-            margin-bottom: 5rem;
+            gap: 1.2rem;
+            margin-bottom: 6rem;
         }
 
         .stack-item {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1rem;
+            border: 1px solid rgba(112, 0, 255, 0.1);
+            padding: 1.2rem;
             text-align: center;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #d1d5db;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: default;
         }
 
         .stack-item:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
-            transform: translateY(-3px);
-        }
-
-        /* --- PROJECTS SECTION --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
+            border-color: var(--accent-primary);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.25);
             transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 0, 127, 0.02);
         }
 
-        .project-card:hover::before {
-            transform: scaleX(1);
+        /* --- PROJECTS SECTION (EMPTY PLACEHOLDER) --- */
+        .projects-wrapper {
+            margin-bottom: 6rem;
         }
 
-        .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .empty-projects {
+            border: 2px dashed rgba(112, 0, 255, 0.2);
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #6b7280;
+            background: rgba(112, 0, 255, 0.01);
         }
 
-        .project-card p {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--accent-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-weight: 600;
+        .empty-projects p {
+            font-size: 1.1rem;
+            font-style: italic;
         }
 
         /* --- CONNECT / CONTACT --- */
         .connect-section {
-            background: radial-gradient(ellipse at top right, rgba(0, 242, 254, 0.05), transparent);
+            background: radial-gradient(circle at top right, rgba(255, 0, 127, 0.07), rgba(112, 0, 255, 0.03));
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem;
+            border-radius: 20px;
+            padding: 4rem 2rem;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .connect-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ffffff, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .connect-section p {
             color: #9ca3af;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .social-links {
@@ -231,41 +199,44 @@
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2.5rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
-            color: #000;
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(255, 0, 127, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(0, 242, 254, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 0, 127, 0.55);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-color);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .btn-secondary:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            background: rgba(0, 242, 254, 0.02);
+            border-color: var(--accent-tertiary);
+            color: var(--accent-tertiary);
+            background: rgba(0, 242, 254, 0.03);
+            transform: translateY(-2px);
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .container { padding: 1rem; }
-            .connect-section { padding: 2rem; }
+            h1 { font-size: 2.8rem; }
+            .container { padding: 1.2rem; }
+            .connect-section { padding: 3rem 1.5rem; }
+            .connect-section h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -276,22 +247,22 @@
     <div class="container">
         
         <header>
-            <div class="glitch-wrapper">
-                <div class="title-pre">Φοιτητής Πληροφορικής & Τηλεπικοινωνιών</div>
-                <h1>Γιώργος Μοσχολιός</h1>
+            <div>
+                <div class="title-pre">Informatics & Telecommunications Student</div>
+                <h1>George Mosxolios</h1>
                 <p class="subtitle">
-                    Σπουδάζω στο <strong>Πανεπιστήμιο Πελοποννήσου</strong> (2025 - 2029). 
-                    Αναπτύσσω καινοτόμα ψηφιακά περιβάλλοντα και λύσεις, εστιάζοντας στο μέλλον της τεχνολογίας.
+                    Currently pursuing a Bachelor's degree at the <strong>University of Peloponnese</strong> (2025 - 2029). 
+                    Passionate about building futuristic, highly efficient digital solutions and exploring modern technology stacks.
                 </p>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="#projects" class="btn btn-primary">Δείτε τη δουλειά μου</a>
-                    <a href="#connect" class="btn btn-secondary">Επικοινωνία</a>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#connect" class="btn btn-secondary">Get In Touch</a>
                 </div>
             </div>
         </header>
 
         <section id="stack">
-            <h2 class="section-title">Tech Stack</h2>
+            <h2 class="section-title">Technical Expertise</h2>
             <div class="stack-grid">
                 <div class="stack-item">Python</div>
                 <div class="stack-item">C / C++</div>
@@ -304,44 +275,17 @@
             </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="projects-wrapper">
             <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <h3>Project Name Ον</h3>
-                    <p>Μια σύντομη αλλά εντυπωσιακή περιγραφή του τι κάνει αυτό το project. Εξήγησε το πρόβλημα που έλυσες για τους εργοδότες.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Algorithms</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Project Name Δύο</h3>
-                    <p>Άλλο ένα project που αναδεικνύει τις ικανότητές σου στις τηλεπικοινωνίες, τα δίκτυα ή την ανάπτυξη λογισμικού.</p>
-                    <div class="project-tags">
-                        <span class="tag">C++</span>
-                        <span class="tag">Networking</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Project Name Τρία</h3>
-                    <p>Ένα web app ή script που αυτοματοποιεί μια διαδικασία. Δείξε στους επαγγελματίες ότι ξέρεις να γράφεις καθαρό κώδικα.</p>
-                    <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">UI/UX</span>
-                    </div>
-                </div>
-
+            <div class="empty-projects">
+                <p>Innovative projects are currently under development. Stay tuned for updates!</p>
             </div>
         </section>
 
         <section id="connect">
             <div class="connect-section">
-                <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Let's Build Something Together</h2>
-                <p>Είμαι πάντα ανοιχτός σε νέες προκλήσεις, πρακτική άσκηση και συνεργασίες με επαγγελματίες του χώρου.</p>
+                <h2>Let's Build Something Extraordinary</h2>
+                <p>I am always eager to collaborate on innovative projects, open-source initiatives, or professional opportunities with industry experts.</p>
                 
                 <div class="social-links">
                     <a href="mailto:georgemosxolios@gmail.com" class="btn btn-primary">Email Me</a>
