@@ -25,14 +25,7 @@ The site follows a clean, single-page layout including:
 2. **Education:** Academic details regarding my department at the University of Peloponnese.
 3. **Skills:** Core technical and interpersonal skills I am currently developing.
 4. **Contact:** Quick access to my Email and LinkedIn profiles.
-
----
-
-## 📈 Future Enhancements (To-Do)
-* [ ] Implement a dark mode toggle using JavaScript.
-* [ ] Create a dedicated portfolio section for academic projects.
-* [ ] Connect a custom domain (e.g., .me) using the GitHub Student Developer Pack.
-
+   
 ---
 
 ## 📬 Connect with Me
