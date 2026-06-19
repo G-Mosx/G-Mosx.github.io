@@ -1,9 +1,9 @@
-# G.MosxLab.github.io
+# GMosxLab.github.io
 # 🌐 My First Ever Website | Personal Portfolio
 
 Welcome to my very first project on GitHub! This is my personal portfolio website, which I created as a student at the University of Peloponnese to showcase my academic journey, skills, and projects.
 
-🚀 **View the live website here:** [https://G.MosxLab.github.io](https://G.MosxLab.github.io)
+🚀 **View the live website here:** [https://GMosxLab.github.io](https://GMosxLab.github.io)
 
 ---
 
