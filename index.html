@@ -3,332 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Mainframe | Personal Node</title>
+    <title>Personal Portfolio | UOP Student</title>
+    <!-- FontAwesome for the Connect Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Main Font: Poppins & Montserrat for heavy text -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --matrix-green: #00ff66;
-            --matrix-dim: #003311;
-            --bg-black: #050505;
-            --card-black: rgba(10, 15, 10, 0.85);
-            --text-light: #e0ece0;
-            --border-neon: rgba(0, 255, 102, 0.25);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        /* Matrix Background Canvas */
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            opacity: 0.15; /* Διακριτικό φόντο για να μην ενοχλεί στην ανάγνωση */
+            --bg-dark: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+            --tag-bg: #111111;
+            --tag-border: #333333;
+            --pink: #ff66aa;
+            --cyan: #33ccff;
+            --gold: #d4af37;
         }
 
         body {
-            font-family: 'Fira Code', monospace;
-            background-color: var(--bg-black);
-            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* 1. Centered Header Menu */
         header {
-            text-align: center;
-            padding: 5rem 1rem 3rem 1rem;
-            position: relative;
-        }
-
-        /* Glitch Effect στον Τίτλο */
-        header h1 {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 3.8rem;
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px var(--matrix-green);
-        }
-
-        .status-bar {
-            display: inline-block;
-            background: var(--matrix-dim);
-            color: var(--matrix-green);
-            padding: 6px 16px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            border: 1px solid var(--border-neon);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: blink 2s infinite;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto 4rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Cyber Terminal Cards */
-        section {
-            background: var(--card-black);
-            border: 1px solid var(--border-neon);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.03);
-            transition: all 0.3s ease;
-        }
-
-        section:hover {
-            border-color: var(--matrix-green);
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.15);
-            transform: scale(1.005);
-        }
-
-        h2 {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.6rem;
-            color: var(--matrix-green);
-            margin-top: 0;
+            width: 100%;
+            padding: 2rem 1rem;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-            border-bottom: 1px dashed var(--border-neon);
-            padding-bottom: 0.8rem;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        p {
-            line-height: 1.8;
-            color: #b8cbb8;
-        }
-
-        /* Command Line List Style */
-        .cmd-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .cmd-list li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .cmd-list li::before {
-            content: ">>";
-            position: absolute;
-            left: 0;
-            color: var(--matrix-green);
-            font-weight: bold;
-        }
-
-        /* Tech Badges */
-        .grid-tags {
+        nav {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 1.5rem;
+            gap: 20px;
         }
 
-        .tag {
-            border: 1px solid var(--border-neon);
-            background: rgba(0, 255, 102, 0.02);
-            color: var(--matrix-green);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-        }
-
-        .tag:hover {
-            background: var(--matrix-green);
-            color: var(--bg-black);
-            box-shadow: 0 0 15px var(--matrix-green);
-            font-weight: bold;
-        }
-
-        /* Cyber Buttons */
-        .connect-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 1.5rem;
-        }
-
-        @media(max-width: 600px) {
-            .connect-grid { grid-template-columns: 1fr; }
-        }
-
-        .connect-btn {
-            border: 1px solid var(--border-neon);
-            background: rgba(0,0,0,0.5);
-            padding: 1rem;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        nav a {
             text-decoration: none;
-            color: var(--text-light);
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cyan);
+        }
+
+        /* Main Container */
+        .main-content {
+            max-width: 800px;
+            width: 100%;
+            margin-top: 5rem;
+            padding: 0 1.5rem;
+            text-align: left;
+        }
+
+        /* 2. Top-Aligned Title Area */
+        .title-line {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .title-line::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background-color: var(--text-secondary);
+            margin-right: 10px;
+        }
+
+        /* 3. Extreme Headline Styling */
+        .headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin: 0;
+        }
+
+        /* 4. Striped Top Name */
+        .striped-name {
+            display: inline-block;
+            background: linear-gradient(
+                to bottom,
+                var(--pink) 0%, var(--pink) 33.3%,
+                #ffffff 33.3%, #ffffff 66.6%,
+                var(--cyan) 66.6%, var(--cyan) 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 5. Golden Outline Bottom Name */
+        .outline-name {
+            display: inline-block;
+            -webkit-text-stroke: 1px var(--gold);
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        /* Body Description */
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        /* 6. Centered Tag List */
+        .tag-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 5rem;
+        }
+
+        .tag-item {
+            background-color: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
             transition: all 0.3s;
         }
 
-        .connect-btn i {
-            font-size: 1.4rem;
-            color: var(--matrix-green);
+        .tag-item:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            box-shadow: 0 0 10px rgba(51, 204, 255, 0.2);
         }
 
-        .connect-btn:hover {
-            border-color: var(--matrix-green);
-            background: rgba(0, 255, 102, 0.05);
-            box-shadow: inset 0 0 10px rgba(0, 255, 10 green, 0.1);
-        }
-
-        .connect-btn span {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--matrix-green);
-            opacity: 0.7;
-        }
-
-        .footer {
+        /* Footer with Icons */
+        footer {
+            margin-top: auto;
+            margin-bottom: 3rem;
             text-align: center;
-            padding: 3rem 1rem;
-            font-size: 0.8rem;
-            color: var(--matrix-dim);
-            letter-spacing: 1px;
+            opacity: 0.5;
         }
 
-        @keyframes blink {
-            50% { opacity: 0.6; }
+        footer i {
+            margin: 0 10px;
+            font-size: 1.2rem;
+            color: var(--text-primary);
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Matrix Rain Canvas -->
-    <canvas id="matrix-canvas"></canvas>
-
     <header>
-        <!-- 🛠️ ΑΛΛΑΞΕ ΤΟ ΟΝΟΜΑ ΣΟΥ ΕΔΩ -->
-        <h1>GEORGE MOSCHOLIOS</h1>
-        <div class="status-bar"><i class="fas fa-circle" style="font-size: 10px;"></i> Node.Active // University of Peloponnese</div>
+        <nav>
+            <a href="#">HOME</a>
+            <a href="#">PROJECTS</a>
+            <a href="#">EXPERIENCE</a>
+            <a href="#">SKILLS</a>
+            <a href="#">CONNECT</a>
+        </nav>
     </header>
 
-    <div class="container">
+    <div class="main-content">
+        <div class="title-line">
+            — INFORMATICS STUDENT • DEVELOPER • UOP
+        </div>
         
-        <section id="terminal">
-            <h2><i class="fas fa-code-branch"></i> core_init.sh</h2>
-            <p>Welcome, guest. I am an undergraduate student currently deployed at the University of Peloponnese. This node serves as my production environment where I document my academic achievements, write scripts, and explore advanced technology concepts.</p>
-        </section>
+        <h1 class="headline">
+            <span class="striped-name">GEORGE</span><br>
+            <span class="outline-name">MOSCHOLIOS</span>
+        </h1>
 
-        <section id="education">
-            <h2><i class="fas fa-server"></i> Academic_Nodes</h2>
-            <ul class="cmd-list">
-                <li>
-                    <strong style="color: #fff;">BSc in Informatics & Telecommunications</strong><br>
-                    <span style="color: var(--matrix-green);">University of Peloponnese</span><br>
-                    <span style="color: #888; font-size: 0.9rem;">Timeline: [2025 - 2029] // Status: In_Progress</span>
-                </li>
-            </ul>
-        </section>
+        <div class="description">
+            First-year Informatics and Telecommunications student at the University
+            of Peloponnese. Focused on building clean, efficient user interfaces
+            and exploring innovative IoT solutions. Passionate about solving complex
+            problems with elegant code and creative thinking.
+        </div>
 
-        <section id="modules">
-            <h2><i class="fas fa-cubes"></i> Core_Modules</h2>
-            <div class="grid-tags">
-                <span class="tag">HTML_Architecture</span>
-                <span class="tag">CSS_Styling</span>
-                <span class="tag">JavaScript_v6</span>
-                <span class="tag">Python_Core</span>
-                <span class="tag">Git_VersionControl</span>
-                <span class="tag">Linux_Systems</span>
-            </div>
-        </section>
-
-        <section id="uplink">
-            <h2><i class="fas fa-satellite-dish"></i> Secure_Uplink</h2>
-            <p>Select a gateway protocol to establish direct communication:</p>
-            
-            <div class="connect-grid">
-                <!-- 🛠️ ΒΑΛΕ ΤΟ EMAIL ΣΟΥ -->
-                <a href="mailto:georgemosxolios@gmail.com" class="connect-btn">
-                    <i class="fas fa-terminal"></i>
-                    <div>
-                        <span>[PROTOCOL_SMTP]</span>
-                        <strong>georgemosxolios@gmail.com</strong>
-                    </div>
-                </a>
-                
-                <!-- 🛠️ ΒΑΛΕ ΤΟ LINKEDIN ΣΟΥ -->
-                <a href="https://www.linkedin.com/in/george-moscholios" target="_blank" class="connect-btn">
-                    <i class="fab fa-linkedin-in"></i>
-                    <div>
-                        <span>[NET_HANDSHAKE]</span>
-                        <strong>LinkedIn Profile</strong>
-                    </div>
-                </a>
-            </div>
-        </section>
-
+        <div class="tag-list">
+            <span class="tag-item">WEB_DESIGN</span>
+            <span class="tag-item">FULL_STACK</span>
+            <span class="tag-item">IOT</span>
+            <span class="tag-item">GITHUB</span>
+            <span class="tag-item">PYTHON</span>
+        </div>
     </div>
 
-    <div class="footer">
-        <p>// Connection secured. System time synced. 2026</p>
-    </div>
+    <footer>
+        <i class="fab fa-github"></i>
+        <i class="fab fa-linkedin"></i>
+    </footer>
 
-    <!-- JavaScript for Matrix Rain Animation -->
-    <script>
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const katakana = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890XYZ';
-        const alphabet = katakana.split('');
-
-        const fontSize = 16;
-        let columns = canvas.width / fontSize;
-
-        const rainDrops = [];
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-
-        function draw() {
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00ff66';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
-                rainDrops[i]++;
-            }
-        }
-
-        setInterval(draw, 30);
-    </script>
 </body>
 </html>
