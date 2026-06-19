@@ -14,13 +14,13 @@
         }
 
         :root {
-            --bg-color: #080510; /* Ultra deep space purple */
+            --bg-color: #06040a; /* Ultra deep sleek dark */
             --text-color: #f3f4f6;
-            --accent-primary: #ff007f; /* Neon Magenta / Pink */
+            --accent-primary: #ff007f; /* Neon Magenta */
             --accent-secondary: #7000ff; /* Electric Purple */
-            --accent-tertiary: #00f2fe; /* Cyan highlight */
+            --accent-tertiary: #00f2fe; /* Cyan */
             --card-bg: rgba(112, 0, 255, 0.04);
-            --border-color: rgba(255, 0, 127, 0.2);
+            --border-color: rgba(255, 0, 127, 0.15);
         }
 
         body {
@@ -37,7 +37,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at center, rgba(112, 0, 255, 0.08) 0%, rgba(255, 0, 127, 0.03) 30%, transparent 60%);
+            background: radial-gradient(circle at center, rgba(112, 0, 255, 0.07) 0%, rgba(255, 0, 127, 0.03) 30%, transparent 60%);
             z-index: -1;
             animation: floatGlow 20s infinite alternate linear;
         }
@@ -56,7 +56,7 @@
 
         /* --- HERO SECTION --- */
         header {
-            min-height: 85vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -95,7 +95,13 @@
             padding-bottom: 2px;
         }
 
-        /* --- STACK / SKILLS --- */
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- GENERAL UTILITIES --- */
         .section-title {
             font-size: 2.2rem;
             margin-bottom: 2.5rem;
@@ -116,11 +122,83 @@
             border-radius: 2px;
         }
 
+        .section-wrapper {
+            margin-bottom: 6rem;
+        }
+
+        /* --- EDUCATION SECTION --- */
+        .edu-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .edu-timeline {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-tertiary);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .edu-card h3 {
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+        .edu-card h4 {
+            color: #9ca3af;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .edu-details {
+            list-style: none;
+            color: #b3b4bd;
+        }
+
+        .edu-details li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .edu-details li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* --- STACK SECTION --- */
         .stack-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 1.2rem;
-            margin-bottom: 6rem;
         }
 
         .stack-item {
@@ -140,14 +218,9 @@
             color: #ffffff;
             box-shadow: 0 0 20px rgba(255, 0, 127, 0.25);
             transform: translateY(-5px);
-            background: rgba(255, 0, 127, 0.02);
         }
 
-        /* --- PROJECTS SECTION (EMPTY PLACEHOLDER) --- */
-        .projects-wrapper {
-            margin-bottom: 6rem;
-        }
-
+        /* --- PROJECTS SECTION --- */
         .empty-projects {
             border: 2px dashed rgba(112, 0, 255, 0.2);
             border-radius: 16px;
@@ -165,12 +238,11 @@
         /* --- CONNECT / CONTACT --- */
         .connect-section {
             background: radial-gradient(circle at top right, rgba(255, 0, 127, 0.07), rgba(112, 0, 255, 0.03));
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(255, 0, 127, 0.2);
             border-radius: 20px;
             padding: 4rem 2rem;
             text-align: center;
             margin-bottom: 4rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .connect-section h2 {
@@ -197,6 +269,7 @@
             flex-wrap: wrap;
         }
 
+        /* --- BUTTONS SYSTEM --- */
         .btn {
             display: inline-block;
             padding: 0.9rem 2.5rem;
@@ -204,31 +277,49 @@
             text-decoration: none;
             font-weight: 600;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #ffffff;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-            color: #ffffff;
+        .btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Distinct Full-Color Styles */
+        .btn-email {
+            background: linear-gradient(45deg, #ff007f, #7000ff);
             box-shadow: 0 4px 20px rgba(255, 0, 127, 0.3);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
+        .btn-email:hover {
             box-shadow: 0 6px 25px rgba(255, 0, 127, 0.55);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-color);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .btn-github {
+            background: linear-gradient(45deg, #24292e, #4a4f56);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .btn-github:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 25px rgba(36, 41, 46, 0.7);
         }
 
-        .btn-secondary:hover {
+        .btn-linkedin {
+            background: linear-gradient(45deg, #0077b5, #00a0dc);
+            box-shadow: 0 4px 20px rgba(0, 119, 181, 0.3);
+        }
+        .btn-linkedin:hover {
+            box-shadow: 0 6px 25px rgba(0, 119, 181, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .btn-outline:hover {
             border-color: var(--accent-tertiary);
             color: var(--accent-tertiary);
             background: rgba(0, 242, 254, 0.03);
-            transform: translateY(-2px);
         }
 
         /* --- RESPONSIVE --- */
@@ -237,31 +328,53 @@
             .container { padding: 1.2rem; }
             .connect-section { padding: 3rem 1.5rem; }
             .connect-section h2 { font-size: 2.2rem; }
+            .edu-header { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Animated Cosmic Glow Element -->
     <div class="bg-glow"></div>
 
     <div class="container">
         
+        <!-- HERO SECTION -->
         <header>
             <div>
-                <div class="title-pre">Informatics & Telecommunications Student</div>
+                <div class="title-pre">Informatics & Telecommunications</div>
                 <h1>George Mosxolios</h1>
                 <p class="subtitle">
-                    Currently pursuing a Bachelor's degree at the <strong>University of Peloponnese</strong> (2025 - 2029). 
-                    Passionate about building futuristic, highly efficient digital solutions and exploring modern technology stacks.
+                    Driven computer science student focusing on software engineering, algorithm optimization, and modern network technologies.
                 </p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#connect" class="btn btn-secondary">Get In Touch</a>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-email">Explore Projects</a>
+                    <a href="#education" class="btn btn-outline">Academic Journey</a>
                 </div>
             </div>
         </header>
 
-        <section id="stack">
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="section-wrapper">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-card">
+                <div class="edu-header">
+                    <div>
+                        <h3>B.Sc. in Informatics & Telecommunications</h3>
+                        <h4>University of Peloponnese</h4>
+                    </div>
+                    <span class="edu-timeline">2025 — 2029</span>
+                </div>
+                <ul class="edu-details">
+                    <li>Core focus on Software Development, Data Structures, and Telecommunication Systems.</li>
+                    <li>Building a strong theoretical foundation combined with practical engineering skills.</li>
+                    <li>Actively expanding expertise through university labs and independent technical projects.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- STACK SECTION -->
+        <section id="stack" class="section-wrapper">
             <h2 class="section-title">Technical Expertise</h2>
             <div class="stack-grid">
                 <div class="stack-item">Python</div>
@@ -270,26 +383,30 @@
                 <div class="stack-item">JavaScript</div>
                 <div class="stack-item">Git & GitHub</div>
                 <div class="stack-item">Linux Systems</div>
+                <div class="stack-item">Data Structures</div>
+                <div class="stack-item">Algorithms</div>
             </div>
         </section>
 
-        <section id="projects" class="projects-wrapper">
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section-wrapper">
             <h2 class="section-title">Featured Projects</h2>
             <div class="empty-projects">
                 <p>Innovative projects are currently under development. Stay tuned for updates!</p>
             </div>
         </section>
 
+        <!-- CONNECT SECTION -->
         <section id="connect">
             <div class="connect-section">
                 <h2>Let's Build Something Extraordinary</h2>
-                <p>I am always eager to collaborate on innovative projects, open-source initiatives, or professional opportunities with industry experts.</p>
+                <p>I am always open to collaborating on innovative ideas, open-source development, or exploring tech opportunities.</p>
                 
                 <div class="social-links">
-                    <a href="mailto:georgemosxolios@gmail.com" class="btn btn-primary">Email Me</a>
-                    
-                    <a href="https://github.com/G-Mosx" target="_blank" class="btn btn-secondary">GitHub Profile</a>
-                    <a href="https://www.linkedin.com/in/george-moscholios" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                    <!-- Ready to use Links with Custom Solid Branded Colors -->
+                    <a href="mailto:georgemosxolios@gmail.com" class="btn btn-email">Email Me</a>
+                    <a href="#" target="_blank" class="btn btn-github">GitHub</a>
+                    <a href="#" target="_blank" class="btn btn-linkedin">LinkedIn</a>
                 </div>
             </div>
         </section>
