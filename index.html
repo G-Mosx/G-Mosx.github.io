@@ -3,286 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio | University of Peloponnese</title>
-    <!-- FontAwesome for beautiful icons -->
+    <title>⚡ Cyber Portfolio | UOP Student</title>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Sci-Fi/Modern Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
-            --text-muted: #64748b;
-            --primary-color: #3b82f6;
-            --primary-dark: #1d4ed8;
-            --header-gradient: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --bg-dark: #030712;
+            --card-bg: #0b0f19;
+            --neon-cyan: #06b6d4;
+            --neon-purple: #a855f7;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-glow: rgba(6, 182, 212, 0.15);
         }
 
-        [data-theme="dark"] {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary-color: #60a5fa;
-            --primary-dark: #3b82f6;
-            --header-gradient: linear-gradient(135deg, #0f172a, #1e3a8a);
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+        * {
+            box-sizing: border-box;
+            selection-background-color: var(--neon-cyan);
+            selection-color: var(--bg-dark);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s, color 0.3s;
-            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
         }
 
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            transition: background 0.3s;
-            font-weight: 600;
-        }
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
+        /* Extreme Cyber Header */
         header {
-            background: var(--header-gradient);
-            color: white;
             text-align: center;
-            padding: 5rem 1rem 4rem 1rem;
+            padding: 6rem 1rem 4rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
+            box-shadow: 0 0 20px var(--neon-cyan);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             font-weight: 700;
             letter-spacing: -0.05em;
+            background: linear-gradient(90deg, #fff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        header p {
-            margin: 0.5rem 0 0 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-weight: 300;
+        .subtitle {
+            font-family: 'Fira Code', monospace;
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            margin-top: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .container {
-            max-width: 750px;
+            max-width: 800px;
             margin: 3rem auto;
             padding: 0 1.5rem;
         }
 
-        /* Fancy Card Style with Fade-In Animation */
+        /* Tech Card Layout */
         section {
             background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 2.5rem;
-            margin-bottom: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeIn 0.8s ease-out;
+            margin-bottom: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.7);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideUp 0.8s ease-out;
         }
 
         section:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.1);
         }
 
+        /* Glowing titles */
         h2 {
-            color: var(--primary-color);
+            font-size: 1.6rem;
             margin-top: 0;
-            font-size: 1.5rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 10px;
-            border-bottom: 2px solid cubic-bezier(0.4, 0, 0.2, 1);
-            padding-bottom: 0.5rem;
+            gap: 12px;
+            color: #fff;
+        }
+
+        h2 i {
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
         }
 
         p {
-            color: var(--text-color);
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        li {
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .education-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .university-name {
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        .date {
-            font-size: 0.9rem;
             color: var(--text-muted);
-            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
 
-        /* Badges for Skills */
-        .skills-grid {
+        /* Terminal style lists */
+        .tech-list {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .tech-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-list li::before {
+            content: '>';
+            color: var(--neon-cyan);
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+
+        /* Futuristic Badges */
+        .skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 1rem;
+            gap: 12px;
+            margin-top: 1.5rem;
         }
 
         .skill-badge {
-            background-color: rgba(59, 130, 246, 0.1);
-            color: var(--primary-color);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            color: var(--neon-cyan);
+            font-family: 'Fira Code', monospace;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
         }
 
-        /* Contact Links */
-        .contact-list a {
-            color: var(--text-color);
-            text-decoration: none;
-            display: inline-flex;
+        .skill-badge:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Neon Buttons for Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        @media(max-width: 600px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 14px;
+            display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 500;
-            transition: color 0.2s;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s;
         }
 
-        .contact-list a:hover {
-            color: var(--primary-color);
+        .contact-card i {
+            font-size: 1.5rem;
+            color: var(--neon-purple);
         }
 
-        .contact-item {
-            margin-bottom: 1rem;
+        .contact-card:hover {
+            background: rgba(168, 85, 247, 0.05);
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
+        }
+
+        .contact-details span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-details strong {
+            font-size: 0.95rem;
         }
 
         .footer {
             text-align: center;
-            padding: 3rem 1rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            padding: 4rem 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.2);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* Extreme Animations */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <i id="theme-icon" class="fas fa-moon"></i> Dark Mode
-    </button>
-
     <header>
-        <!-- CHANGE YOUR NAME HERE -->
-        <h1>John Doe</h1>
-        <p>Undergraduate Student @ University of Peloponnese</p>
+        <!-- 🛠️ ΑΛΛΑΞΕ ΤΟ ΟΝΟΜΑ ΣΟΥ ΕΔΩ -->
+        <h1>YOUR NAME</h1>
+        <div class="subtitle">System.Student // University of Peloponnese</div>
     </header>
 
     <div class="container">
         
         <section id="about">
-            <h2><i class="fas fa-user"></i> About Me</h2>
-            <p>Welcome to my personal portfolio. I am currently pursuing my degree at the University of Peloponnese. I enjoy exploring new tech stacks, building neat web applications, and working on innovative university projects.</p>
+            <h2><i class="fas fa-terminal"></i> root@info:~# About Me</h2>
+            <p>Welcome to my encrypted space on the web. I am an undergraduate student navigating the tech ecosystem at the University of Peloponnese. Passionate about building high-performance applications, exploring modern architectures, and breaking/fixing things using code.</p>
         </section>
 
         <section id="education">
-            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-            <ul>
+            <h2><i class="fas fa-network-wired"></i> Education_Nodes</h2>
+            <ul class="tech-list">
                 <li>
-                    <span class="education-title">BSc in Informatics and Telecommunications</span><br>
-                    <span class="university-name">University of Peloponnese</span><br>
-                    <span class="date">Expected Graduation: 2028</span>
+                    <div>
+                        <strong style="color: #fff;">BSc in Informatics & Telecommunications</strong><br>
+                        <span style="color: var(--neon-purple);">University of Peloponnese</span> — <span style="font-style: italic;">Class of 2028</span>
+                    </div>
                 </li>
             </ul>
         </section>
 
         <section id="skills">
-            <h2><i class="fas fa-laptop-code"></i> Technical Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-badge">HTML5 & CSS3</span>
-                <span class="skill-badge">JavaScript (ES6+)</span>
-                <span class="skill-badge">Git & GitHub</span>
-                <span class="skill-badge">Python</span>
-                <span class="skill-badge">Teamwork</span>
+            <h2><i class="fas fa-code"></i> Tech_Stack</h2>
+            <div class="skills-container">
+                <span class="skill-badge">HTML5 // CSS3</span>
+                <span class="skill-badge">JavaScript_ES6</span>
+                <span class="skill-badge">Python_3.x</span>
+                <span class="skill-badge">Git/GitHub</span>
+                <span class="skill-badge">Linux_CLI</span>
+                <span class="skill-badge">Algorithms</span>
             </div>
         </section>
 
         <section id="contact">
-            <h2><i class="fas fa-envelope"></i> Let's Connect</h2>
-            <p>Feel free to reach out for collaborations or university-related inquiries:</p>
-            <div class="contact-list">
-                <div class="contact-item">
-                    <a href="mailto:your-email@example.com"><i class="fas fa-envelope-open-text" style="color: #ef4444;"></i> your-email@example.com</a>
-                </div>
-                <div class="contact-item">
-                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin" style="color: #0a66c2;"></i> LinkedIn Profile</a>
-                </div>
+            <h2><i class="fas fa-bolt"></i> Establish_Connection</h2>
+            <p>Initiate contact through one of the secure protocols below:</p>
+            
+            <div class="contact-grid">
+                <!-- 🛠️ ΒΑΛΕ ΤΟ EMAIL ΣΟΥ -->
+                <a href="mailto:your-email@example.com" class="contact-card">
+                    <i class="fas fa-envelope-open"></i>
+                    <div class="contact-details">
+                        <span>EMAIL PROTOCOL</span>
+                        <strong>your-email@example.com</strong>
+                    </div>
+                </a>
+                
+                <!-- 🛠️ ΒΑΛΕ ΤΟ LINKEDIN ΣΟΥ -->
+                <a href="https://linkedin.com" target="_blank" class="contact-card">
+                    <i class="fab fa-linkedin-in"></i>
+                    <div class="contact-details">
+                        <span>NETWORKING</span>
+                        <strong>LinkedIn Profile</strong>
+                    </div>
+                </a>
             </div>
         </section>
 
     </div>
 
     <div class="footer">
-        <p>&copy; 2026 Hosted with ❤️ on GitHub Pages.</p>
+        <p>// Compilation successful. Hosted on GitHub Pages &copy; 2026</p>
     </div>
 
-    <!-- JavaScript for Dark Mode logic -->
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.getElementById('theme-icon');
-            const btn = document.querySelector('.theme-toggle');
-            
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                icon.className = 'fas fa-moon';
-                btn.innerHTML = '<i id="theme-icon" class="fas fa-moon"></i> Dark Mode';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                icon.className = 'fas fa-sun';
-                btn.innerHTML = '<i id="theme-icon" class="fas fa-sun"></i> Light Mode';
-            }
-        }
-    </script>
 </body>
 </html>
