@@ -3,178 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Cyber Portfolio | UOP Student</title>
-    <!-- FontAwesome Icons -->
+    <title>⚡ Mainframe | Personal Node</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Sci-Fi/Modern Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #030712;
-            --card-bg: #0b0f19;
-            --neon-cyan: #06b6d4;
-            --neon-purple: #a855f7;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-glow: rgba(6, 182, 212, 0.15);
+            --matrix-green: #00ff66;
+            --matrix-dim: #003311;
+            --bg-black: #050505;
+            --card-black: rgba(10, 15, 10, 0.85);
+            --text-light: #e0ece0;
+            --border-neon: rgba(0, 255, 102, 0.25);
         }
 
         * {
             box-sizing: border-box;
-            selection-background-color: var(--neon-cyan);
-            selection-color: var(--bg-dark);
+        }
+
+        /* Matrix Background Canvas */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.15; /* Διακριτικό φόντο για να μην ενοχλεί στην ανάγνωση */
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: 'Fira Code', monospace;
+            background-color: var(--bg-black);
+            color: var(--text-light);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
         }
 
-        /* Extreme Cyber Header */
         header {
             text-align: center;
-            padding: 6rem 1rem 4rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 5rem 1rem 3rem 1rem;
             position: relative;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
-            box-shadow: 0 0 20px var(--neon-cyan);
-        }
-
+        /* Glitch Effect στον Τίτλο */
         header h1 {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 3.8rem;
             margin: 0;
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            background: linear-gradient(90deg, #fff, #9ca3af);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px var(--matrix-green);
         }
 
-        .subtitle {
-            font-family: 'Fira Code', monospace;
-            color: var(--neon-cyan);
-            font-size: 1.1rem;
-            margin-top: 0.8rem;
+        .status-bar {
+            display: inline-block;
+            background: var(--matrix-dim);
+            color: var(--matrix-green);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            border: 1px solid var(--border-neon);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            animation: blink 2s infinite;
         }
 
         .container {
             max-width: 800px;
-            margin: 3rem auto;
+            margin: 0 auto 4rem auto;
             padding: 0 1.5rem;
         }
 
-        /* Tech Card Layout */
+        /* Cyber Terminal Cards */
         section {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: var(--card-black);
+            border: 1px solid var(--border-neon);
             padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.7);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: slideUp 0.8s ease-out;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.03);
+            transition: all 0.3s ease;
         }
 
         section:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: rgba(6, 182, 212, 0.4);
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.1);
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.15);
+            transform: scale(1.005);
         }
 
-        /* Glowing titles */
         h2 {
+            font-family: 'Share Tech Mono', monospace;
             font-size: 1.6rem;
+            color: var(--matrix-green);
             margin-top: 0;
-            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 12px;
-            color: #fff;
-        }
-
-        h2 i {
-            color: var(--neon-purple);
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+            text-transform: uppercase;
+            border-bottom: 1px dashed var(--border-neon);
+            padding-bottom: 0.8rem;
         }
 
         p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
             line-height: 1.8;
+            color: #b8cbb8;
         }
 
-        /* Terminal style lists */
-        .tech-list {
-            font-family: 'Fira Code', monospace;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            padding-left: 0;
+        /* Command Line List Style */
+        .cmd-list {
             list-style: none;
+            padding: 0;
         }
 
-        .tech-list li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .cmd-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
         }
 
-        .tech-list li::before {
-            content: '>';
-            color: var(--neon-cyan);
+        .cmd-list li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--matrix-green);
             font-weight: bold;
-            text-shadow: 0 0 5px var(--neon-cyan);
         }
 
-        /* Futuristic Badges */
-        .skills-container {
+        /* Tech Badges */
+        .grid-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             margin-top: 1.5rem;
         }
 
-        .skill-badge {
-            background: rgba(6, 182, 212, 0.05);
-            border: 1px solid rgba(6, 182, 212, 0.15);
-            color: var(--neon-cyan);
-            font-family: 'Fira Code', monospace;
-            padding: 8px 16px;
-            border-radius: 12px;
+        .tag {
+            border: 1px solid var(--border-neon);
+            background: rgba(0, 255, 102, 0.02);
+            color: var(--matrix-green);
+            padding: 6px 12px;
+            border-radius: 4px;
             font-size: 0.85rem;
             transition: all 0.3s;
         }
 
-        .skill-badge:hover {
-            background: var(--neon-cyan);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px var(--neon-cyan);
-            transform: translateY(-2px);
+        .tag:hover {
+            background: var(--matrix-green);
+            color: var(--bg-black);
+            box-shadow: 0 0 15px var(--matrix-green);
+            font-weight: bold;
         }
 
-        /* Neon Buttons for Contact */
-        .contact-grid {
+        /* Cyber Buttons */
+        .connect-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
@@ -182,116 +168,113 @@
         }
 
         @media(max-width: 600px) {
-            .contact-grid { grid-template-columns: 1fr; }
+            .connect-grid { grid-template-columns: 1fr; }
         }
 
-        .contact-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
+        .connect-btn {
+            border: 1px solid var(--border-neon);
+            background: rgba(0,0,0,0.5);
             padding: 1rem;
-            border-radius: 14px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             gap: 15px;
             text-decoration: none;
-            color: var(--text-main);
+            color: var(--text-light);
             transition: all 0.3s;
         }
 
-        .contact-card i {
-            font-size: 1.5rem;
-            color: var(--neon-purple);
+        .connect-btn i {
+            font-size: 1.4rem;
+            color: var(--matrix-green);
         }
 
-        .contact-card:hover {
-            background: rgba(168, 85, 247, 0.05);
-            border-color: var(--neon-purple);
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
+        .connect-btn:hover {
+            border-color: var(--matrix-green);
+            background: rgba(0, 255, 102, 0.05);
+            box-shadow: inset 0 0 10px rgba(0, 255, 10 green, 0.1);
         }
 
-        .contact-details span {
+        .connect-btn span {
             display: block;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .contact-details strong {
-            font-size: 0.95rem;
+            font-size: 0.75rem;
+            color: var(--matrix-green);
+            opacity: 0.7;
         }
 
         .footer {
             text-align: center;
-            padding: 4rem 1rem;
-            font-family: 'Fira Code', monospace;
+            padding: 3rem 1rem;
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.2);
+            color: var(--matrix-dim);
+            letter-spacing: 1px;
         }
 
-        /* Extreme Animations */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes blink {
+            50% { opacity: 0.6; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Background Matrix Rain Canvas -->
+    <canvas id="matrix-canvas"></canvas>
+
     <header>
         <!-- 🛠️ ΑΛΛΑΞΕ ΤΟ ΟΝΟΜΑ ΣΟΥ ΕΔΩ -->
-        <h1>YOUR NAME</h1>
-        <div class="subtitle">System.Student // University of Peloponnese</div>
+        <h1>FIRST_NAME LAST_NAME</h1>
+        <div class="status-bar"><i class="fas fa-circle" style="font-size: 10px;"></i> Node.Active // University of Peloponnese</div>
     </header>
 
     <div class="container">
         
-        <section id="about">
-            <h2><i class="fas fa-terminal"></i> root@info:~# About Me</h2>
-            <p>Welcome to my encrypted space on the web. I am an undergraduate student navigating the tech ecosystem at the University of Peloponnese. Passionate about building high-performance applications, exploring modern architectures, and breaking/fixing things using code.</p>
+        <section id="terminal">
+            <h2><i class="fas fa-code-branch"></i> core_init.sh</h2>
+            <p>Welcome, guest. I am an undergraduate student currently deployed at the University of Peloponnese. This node serves as my production environment where I document my academic achievements, write scripts, and explore advanced technology concepts.</p>
         </section>
 
         <section id="education">
-            <h2><i class="fas fa-network-wired"></i> Education_Nodes</h2>
-            <ul class="tech-list">
+            <h2><i class="fas fa-server"></i> Academic_Nodes</h2>
+            <ul class="cmd-list">
                 <li>
-                    <div>
-                        <strong style="color: #fff;">BSc in Informatics & Telecommunications</strong><br>
-                        <span style="color: var(--neon-purple);">University of Peloponnese</span> — <span style="font-style: italic;">Class of 2028</span>
-                    </div>
+                    <strong style="color: #fff;">BSc in Informatics & Telecommunications</strong><br>
+                    <span style="color: var(--matrix-green);">University of Peloponnese</span><br>
+                    <span style="color: #888; font-size: 0.9rem;">Timeline: [2024 - 2028] // Status: In_Progress</span>
                 </li>
             </ul>
         </section>
 
-        <section id="skills">
-            <h2><i class="fas fa-code"></i> Tech_Stack</h2>
-            <div class="skills-container">
-                <span class="skill-badge">HTML5 // CSS3</span>
-                <span class="skill-badge">JavaScript_ES6</span>
-                <span class="skill-badge">Python_3.x</span>
-                <span class="skill-badge">Git/GitHub</span>
-                <span class="skill-badge">Linux_CLI</span>
-                <span class="skill-badge">Algorithms</span>
+        <section id="modules">
+            <h2><i class="fas fa-cubes"></i> Core_Modules</h2>
+            <div class="grid-tags">
+                <span class="tag">HTML_Architecture</span>
+                <span class="tag">CSS_Styling</span>
+                <span class="tag">JavaScript_v6</span>
+                <span class="tag">Python_Core</span>
+                <span class="tag">Git_VersionControl</span>
+                <span class="tag">Linux_Systems</span>
             </div>
         </section>
 
-        <section id="contact">
-            <h2><i class="fas fa-bolt"></i> Establish_Connection</h2>
-            <p>Initiate contact through one of the secure protocols below:</p>
+        <section id="uplink">
+            <h2><i class="fas fa-satellite-dish"></i> Secure_Uplink</h2>
+            <p>Select a gateway protocol to establish direct communication:</p>
             
-            <div class="contact-grid">
+            <div class="connect-grid">
                 <!-- 🛠️ ΒΑΛΕ ΤΟ EMAIL ΣΟΥ -->
-                <a href="mailto:your-email@example.com" class="contact-card">
-                    <i class="fas fa-envelope-open"></i>
-                    <div class="contact-details">
-                        <span>EMAIL PROTOCOL</span>
+                <a href="mailto:your-email@example.com" class="connect-btn">
+                    <i class="fas fa-terminal"></i>
+                    <div>
+                        <span>[PROTOCOL_SMTP]</span>
                         <strong>your-email@example.com</strong>
                     </div>
                 </a>
                 
                 <!-- 🛠️ ΒΑΛΕ ΤΟ LINKEDIN ΣΟΥ -->
-                <a href="https://linkedin.com" target="_blank" class="contact-card">
+                <a href="https://linkedin.com" target="_blank" class="connect-btn">
                     <i class="fab fa-linkedin-in"></i>
-                    <div class="contact-details">
-                        <span>NETWORKING</span>
+                    <div>
+                        <span>[NET_HANDSHAKE]</span>
                         <strong>LinkedIn Profile</strong>
                     </div>
                 </a>
@@ -301,8 +284,51 @@
     </div>
 
     <div class="footer">
-        <p>// Compilation successful. Hosted on GitHub Pages &copy; 2026</p>
+        <p>// Connection secured. System time synced. 2026</p>
     </div>
 
+    <!-- JavaScript for Matrix Rain Animation -->
+    <script>
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const katakana = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890XYZ';
+        const alphabet = katakana.split('');
+
+        const fontSize = 16;
+        let columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff66';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+
+        setInterval(draw, 30);
+    </script>
 </body>
 </html>
