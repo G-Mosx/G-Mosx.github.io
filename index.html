@@ -1,223 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio | UOP Student</title>
-    <!-- FontAwesome for the Connect Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Main Font: Poppins & Montserrat for heavy text -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>George Moscholios | Portfolio</title>
     <style>
+        /* --- RESET & VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
         :root {
-            --bg-dark: #000000;
-            --text-primary: #ffffff;
-            --text-secondary: #aaaaaa;
-            --tag-bg: #111111;
-            --tag-border: #333333;
-            --pink: #ff66aa;
-            --cyan: #33ccff;
-            --gold: #d4af37;
+            --bg-color: #0a0a0c;
+            --text-color: #f3f4f6;
+            --accent-color: #00f2fe; /* Electric Cyan */
+            --accent-secondary: #4facfe;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(0, 242, 254, 0.2);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- BACKGROUND ANIMATION --- */
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: floatGlow 15s infinite alternate linear;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(5%, 5%); }
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-
-        /* 1. Centered Header Menu */
-        header {
-            width: 100%;
-            padding: 2rem 1rem;
-            display: flex;
             justify-content: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
         }
 
-        nav {
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            display: flex;
-            gap: 20px;
+        .glitch-wrapper {
+            position: relative;
         }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-size: 0.8rem;
+        .title-pre {
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 4px;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: var(--cyan);
-        }
-
-        /* Main Container */
-        .main-content {
-            max-width: 800px;
-            width: 100%;
-            margin-top: 5rem;
-            padding: 0 1.5rem;
-            text-align: left;
-        }
-
-        /* 2. Top-Aligned Title Area */
-        .title-line {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .title-line::before {
-            content: '';
-            width: 30px;
-            height: 1px;
-            background-color: var(--text-secondary);
-            margin-right: 10px;
-        }
-
-        /* 3. Extreme Headline Styling */
-        .headline {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            line-height: 1;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            margin: 0;
-        }
-
-        /* 4. Striped Top Name */
-        .striped-name {
-            display: inline-block;
-            background: linear-gradient(
-                to bottom,
-                var(--pink) 0%, var(--pink) 33.3%,
-                #ffffff 33.3%, #ffffff 66.6%,
-                var(--cyan) 66.6%, var(--cyan) 100%
-            );
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--text-color) 30%, var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
         }
 
-        /* 5. Golden Outline Bottom Name */
-        .outline-name {
-            display: inline-block;
-            -webkit-text-stroke: 1px var(--gold);
-            color: transparent;
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            max-width: 600px;
             margin-bottom: 2rem;
         }
 
-        /* Body Description */
-        .description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            font-weight: 300;
-            margin-bottom: 3rem;
-            max-width: 600px;
+        .subtitle strong {
+            color: var(--text-color);
         }
 
-        /* 6. Centered Tag List */
-        .tag-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
+        /* --- STACK / SKILLS --- */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
             margin-bottom: 5rem;
         }
 
-        .tag-item {
-            background-color: var(--tag-bg);
-            border: 1px solid var(--tag-border);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            transition: all 0.3s;
-        }
-
-        .tag-item:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
-            box-shadow: 0 0 10px rgba(51, 204, 255, 0.2);
-        }
-
-        /* Footer with Icons */
-        footer {
-            margin-top: auto;
-            margin-bottom: 3rem;
+        .stack-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
             text-align: center;
-            opacity: 0.5;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
-        footer i {
-            margin: 0 10px;
-            font-size: 1.2rem;
-            color: var(--text-primary);
+        .stack-item:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* --- CONNECT / CONTACT --- */
+        .connect-section {
+            background: radial-gradient(ellipse at top right, rgba(0, 242, 254, 0.05), transparent);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .connect-section p {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
+            color: #000;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 242, 254, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: rgba(0, 242, 254, 0.02);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 1rem; }
+            .connect-section { padding: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="#">HOME</a>
-            <a href="#">PROJECTS</a>
-            <a href="#">EXPERIENCE</a>
-            <a href="#">SKILLS</a>
-            <a href="#">CONNECT</a>
-        </nav>
-    </header>
+    <div class="bg-glow"></div>
 
-    <div class="main-content">
-        <div class="title-line">
-            — INFORMATICS STUDENT • DEVELOPER • UOP
-        </div>
+    <div class="container">
         
-        <h1 class="headline">
-            <span class="striped-name">GEORGE</span><br>
-            <span class="outline-name">MOSCHOLIOS</span>
-        </h1>
+        <header>
+            <div class="glitch-wrapper">
+                <div class="title-pre">Φοιτητής Πληροφορικής & Τηλεπικοινωνιών</div>
+                <h1>Γιώργος Μοσχολιός</h1>
+                <p class="subtitle">
+                    Σπουδάζω στο <strong>Πανεπιστήμιο Πελοποννήσου</strong> (2025 - 2029). 
+                    Αναπτύσσω καινοτόμα ψηφιακά περιβάλλοντα και λύσεις, εστιάζοντας στο μέλλον της τεχνολογίας.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#projects" class="btn btn-primary">Δείτε τη δουλειά μου</a>
+                    <a href="#connect" class="btn btn-secondary">Επικοινωνία</a>
+                </div>
+            </div>
+        </header>
 
-        <div class="description">
-            First-year Informatics and Telecommunications student at the University
-            of Peloponnese. Focused on building clean, efficient user interfaces
-            and exploring innovative IoT solutions. Passionate about solving complex
-            problems with elegant code and creative thinking.
-        </div>
+        <section id="stack">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="stack-grid">
+                <div class="stack-item">Python</div>
+                <div class="stack-item">C / C++</div>
+                <div class="stack-item">HTML5 / CSS3</div>
+                <div class="stack-item">JavaScript</div>
+                <div class="stack-item">Git & GitHub</div>
+                <div class="stack-item">Linux Systems</div>
+                <div class="stack-item">Data Structures</div>
+                <div class="stack-item">Algorithms</div>
+            </div>
+        </section>
 
-        <div class="tag-list">
-            <span class="tag-item">WEB_DESIGN</span>
-            <span class="tag-item">FULL_STACK</span>
-            <span class="tag-item">IOT</span>
-            <span class="tag-item">GITHUB</span>
-            <span class="tag-item">PYTHON</span>
-        </div>
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <h3>Project Name Ον</h3>
+                    <p>Μια σύντομη αλλά εντυπωσιακή περιγραφή του τι κάνει αυτό το project. Εξήγησε το πρόβλημα που έλυσες για τους εργοδότες.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Algorithms</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project Name Δύο</h3>
+                    <p>Άλλο ένα project που αναδεικνύει τις ικανότητές σου στις τηλεπικοινωνίες, τα δίκτυα ή την ανάπτυξη λογισμικού.</p>
+                    <div class="project-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">Networking</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project Name Τρία</h3>
+                    <p>Ένα web app ή script που αυτοματοποιεί μια διαδικασία. Δείξε στους επαγγελματίες ότι ξέρεις να γράφεις καθαρό κώδικα.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="connect">
+            <div class="connect-section">
+                <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Let's Build Something Together</h2>
+                <p>Είμαι πάντα ανοιχτός σε νέες προκλήσεις, πρακτική άσκηση και συνεργασίες με επαγγελματίες του χώρου.</p>
+                
+                <div class="social-links">
+                    <a href="mailto:georgemosxolios@gmail.com" class="btn btn-primary">Email Me</a>
+                    
+                    <a href="#" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+                    <a href="#" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
     </div>
-
-    <footer>
-        <i class="fab fa-github"></i>
-        <i class="fab fa-linkedin"></i>
-    </footer>
 
 </body>
 </html>
